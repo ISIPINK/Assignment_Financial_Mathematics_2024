@@ -15,3 +15,7 @@ My writing down a full derivation is probably not happening.
 
 What I should do next probably is getting a deep bsde solver
 working.
+
+Here are some links I should look at:
+https://colab.research.google.com/github/janblechschmidt/PDEsByNNs/blob/main/DeepBSDE_Solver.ipynb#scrollTo=MkAvrqE461C-
+https://github.com/frankhan91/DeepBSDE?tab=readme-ov-file#problems
