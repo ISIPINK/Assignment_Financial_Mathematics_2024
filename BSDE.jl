@@ -1,47 +1,34 @@
-using HighDimPDE
-using Flux, Zygote, LinearAlgebra, Statistics
-using Test, StochasticDiffEq
+d = 30 # number of dimensions
+x0 = repeat([1.0f0, 0.5f0], div(d, 2))
+tspan = (0.0f0, 1.0f0)
+dt = 0.2
+m = 30 # number of trajectories (batch size)
 
-begin # solving at one unique point
-    # one-dimensional heat equation
-    x0 = [11.0f0]  # initial points
-    tspan = (0.0f0, 5.0f0)
-    dt = 0.5   # time step
-    time_steps = div(tspan[2] - tspan[1], dt)
-    d = 1      # number of dimensions
-    m = 10     # number of trajectories (batch size)
+r = 0.05f0
+sigma = 0.4f0
+f(X, u, σᵀ∇u, p, t) = r * (u - sum(X .* σᵀ∇u))
+g(X) = sum(X .^ 2)
+μ_f(X, p, t) = zero(X) #Vector d x 1
+σ_f(X, p, t) = Diagonal(sigma * X) #Matrix d x d
+prob = PIDEProblem(μ_f, σ_f, x0, tspan, g, f)
 
-    g(X) = sum(X .^ 2)   # terminal condition
-    f(X, u, σᵀ∇u, p, t) = 0.0f0  # function from solved equation
-    μ_f(X, p, t) = 0.0
-    σ_f(X, p, t) = 1.0
-    prob = ParabolicPDEProblem(μ_f, σ_f, x0, tspan, g, f)
+hls = 10 + d #hidden layer size
+opt = Flux.Optimise.Adam(0.001)
+u0 = Flux.Chain(Dense(d, hls, relu),
+    Dense(hls, hls, relu),
+    Dense(hls, 1))
+σᵀ∇u = Flux.Chain(Dense(d + 1, hls, relu),
+    Dense(hls, hls, relu),
+    Dense(hls, hls, relu),
+    Dense(hls, d))
+pdealg = DeepBSDE(u0, σᵀ∇u, opt=opt)
 
-    hls = 10 + d #hidden layer size
-    opt = Flux.Optimise.Adam(0.005)  #optimizer
-    #sub-neural network approximating solutions at the desired point
-    u0 = Flux.Chain(Dense(d, hls, relu),
-        Dense(hls, hls, relu),
-        Dense(hls, 1))
-    # sub-neural network approximating the spatial gradients at time point
-    σᵀ∇u = [Flux.Chain(Dense(d, hls, relu),
-        Dense(hls, hls, relu),
-        Dense(hls, d)) for i in 1:time_steps]
-
-    alg = DeepBSDE(u0, σᵀ∇u, opt = opt)
-
-    sol = solve(prob,
-        alg,
-        verbose = true,
-        abstol = 1e-8,
-        maxiters = 200,
-        dt = dt,
-        trajectories = m)
-
-    u_analytical(x, t) = sum(x .^ 2) .+ d * t
-    analytical_sol = u_analytical(x0, tspan[end])
-
-    error_l2 = rel_error_l2(sol.us, analytical_sol)
-
-    println("error_l2 = ", error_l2, "\n")
-end
+solve(prob,
+    pdealg,
+    EM(),
+    verbose=true,
+    maxiters=150,
+    trajectories=m,
+    sdealg=StochasticDiffEq,
+    dt=dt,
+    pabstol=1.0f-6)
