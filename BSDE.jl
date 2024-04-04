@@ -1,34 +1,55 @@
-d = 30 # number of dimensions
-x0 = repeat([1.0f0, 0.5f0], div(d, 2))
-tspan = (0.0f0, 1.0f0)
-dt = 0.2
-m = 30 # number of trajectories (batch size)
+using HighDimPDE
+using Flux # needed to define the neural network
 
-r = 0.05f0
-sigma = 0.4f0
-f(X, u, σᵀ∇u, p, t) = r * (u - sum(X .* σᵀ∇u))
-g(X) = sum(X .^ 2)
-μ_f(X, p, t) = zero(X) #Vector d x 1
-σ_f(X, p, t) = Diagonal(sigma * X) #Matrix d x d
-prob = PIDEProblem(μ_f, σ_f, x0, tspan, g, f)
+K = 110.0
+x0 = [100.0]
+dim = 1
+d = dim
+r = 0.02
+mu = 0.07
+t0 = 0.0
+t1 = 1.0
+sigma = 0.3
 
-hls = 10 + d #hidden layer size
-opt = Flux.Optimise.Adam(0.001)
-u0 = Flux.Chain(Dense(d, hls, relu),
-    Dense(hls, hls, relu),
-    Dense(hls, 1))
-σᵀ∇u = Flux.Chain(Dense(d + 1, hls, relu),
-    Dense(hls, hls, relu),
-    Dense(hls, hls, relu),
-    Dense(hls, d))
-pdealg = DeepBSDE(u0, σᵀ∇u, opt=opt)
 
-solve(prob,
-    pdealg,
-    EM(),
+## Definition of the problem
+tspan = (t0, t1) # time horizon
+g(x) = max(0.0, maximum(K .- x)) # initial condition
+μ(x, p, t) = mu * x # advection coefficients
+σ(x, p, t) = sigma * x # diffusion coefficients
+# x0_sample = UniformSampling(fill(-5f-1, d), fill(5f-1, d))
+q(x, y) = r * K * (y <= g(x))
+f(x, y, v_x, v_y, ∇v_x, ∇v_y, p, t) = -r * v_x + q(x, v_x)
+prob = PIDEProblem(g, f, μ, σ, x0, tspan)
+
+
+
+alg = MLP(M=20, L=4, K=10)
+
+@time sol = solve(prob, alg, multithreading=true, verbose=false)
+print(sol)
+## Definition of the neural network to use
+
+hls = dim + 50 #hidden layer size
+nn = Flux.Chain(Dense(dim, hls, tanh),
+    Dense(hls, hls, tanh),
+    Dense(hls, 1)) # neural network used by the scheme
+
+opt = ADAM(1e-2)
+
+## Definition of the algorithm
+alg = DeepSplitting(nn, opt=opt)
+
+x0_sample = UniformSampling(fill(98.0, d), fill(102.0, d))
+
+prob = PIDEProblem(g, f, μ, σ, x0, tspan, x0_sample=x0_sample)
+
+# throws a mapfoldl error
+sol = solve(prob,
+    alg,
+    0.1,
     verbose=true,
-    maxiters=150,
-    trajectories=m,
-    sdealg=StochasticDiffEq,
-    dt=dt,
-    pabstol=1.0f-6)
+    abstol=2e-3,
+    maxiters=1000,
+    batch_size=1000)
+print(sol)
