@@ -24,10 +24,11 @@ prob = PIDEProblem(g, f, μ, σ, x0, tspan)
 
 
 
-alg = MLP(M=20, L=4, K=10)
-
+alg = MLP(M=5, L=4, K=20)
+#isn't accurate enhough, not sure about the defintion of f
 @time sol = solve(prob, alg, multithreading=true, verbose=false)
 print(sol)
+
 ## Definition of the neural network to use
 
 hls = dim + 50 #hidden layer size
