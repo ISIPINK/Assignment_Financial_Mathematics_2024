@@ -18,13 +18,14 @@ g(x) = max(0.0, maximum(K .- x)) # initial condition
 μ(x, p, t) = mu * x # advection coefficients
 σ(x, p, t) = sigma * x # diffusion coefficients
 # x0_sample = UniformSampling(fill(-5f-1, d), fill(5f-1, d))
-q(x, y) = r * K * (y <= g(x))
-f(x, y, v_x, v_y, ∇v_x, ∇v_y, p, t) = -r * v_x + q(x, v_x)
+# q(x, y) = r * K * (y <= g(x))
+# f(x, y, v_x, v_y, ∇v_x, ∇v_y, p, t) = -r * v_x + q(x, v_x)
+f(x, y, v_x, v_y, ∇v_x, ∇v_y, p, t) = -r * v_x
 prob = PIDEProblem(g, f, μ, σ, x0, tspan)
 
 
 
-alg = MLP(M=5, L=4, K=20)
+alg = MLP(M=10, L=4, K=100)
 #isn't accurate enhough, not sure about the defintion of f
 @time sol = solve(prob, alg, multithreading=true, verbose=false)
 print(sol)
