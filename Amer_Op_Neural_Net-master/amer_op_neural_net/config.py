@@ -51,19 +51,30 @@ session_config = tf.ConfigProto(device_count={"CPU": num_cpus},
 
 ###############################################
 
-option_type = ['call', 'geometric', 'vanilla']
-d = 7
-r = 0
+# S0, mu, sigma, T, dt, num_paths = 100, 0.07, 0.3, 1, 0.02, 50000
+# r = 0.02
+# K = 110
+# d = 1
+
+
+option_type = ['put', 'geometric', 'vanilla']
+d = 1
+r = 0.02
 qq = np.array([[0.02] * d], dtype=np_floattype)
-mu = r - qq
-sigma = np.array([[0.25] * d], dtype=np_floattype)
+# mu = r - qq
+mu = np.array([[0.07] * d], dtype=np_floattype)
+
+sigma = np.array([[0.3] * d], dtype=np_floattype)
 rho = np.eye(d, dtype=np_floattype) + 0.75 * (
     np.ones((d, d), dtype=np_floattype) - np.eye(d, dtype=np_floattype))
+
 rhoL = np.linalg.cholesky(rho).T
-K = 1.0
-x0 = K
+# K = 1.0
+K = 110
+# x0 = K
+x0 = 100
 X0 = np.array([[x0] * d], dtype=np_floattype)
-T = 2.0
+T = 1.0
 N = 10
 
 ###############################################
@@ -86,7 +97,7 @@ sharpness = 1 / dt
 updaten = 2
 
 num_channels = 3
-batch_size = 400
+batch_size = 200
 n_relaxstep = 150  # Monitor the first few steps closely
 n_decaystep = 350
 n_totalstep = 600
