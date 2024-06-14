@@ -25,7 +25,7 @@ from sklearn.ensemble import GradientBoostingClassifier, GradientBoostingRegress
 from sklearn.metrics import pairwise_distances_argmin
 from sklearn.neighbors import KNeighborsRegressor, KNeighborsClassifier
 
-savefig_mode = True
+savefig_mode = False
 matplotlib.use('Agg')
 
 
@@ -49,13 +49,6 @@ session_config = tf.ConfigProto(device_count={"CPU": num_cpus},
                                 allow_soft_placement=True,
                                 log_device_placement=False)
 
-###############################################
-
-# S0, mu, sigma, T, dt, num_paths = 100, 0.07, 0.3, 1, 0.02, 50000
-# r = 0.02
-# K = 110
-# d = 1
-
 
 option_type = ['put', 'geometric', 'vanilla']
 d = 1
@@ -78,14 +71,14 @@ T = 1.0
 N = 10
 
 ###############################################
-directory = "Results/option=" + option_type[0] + "&" + option_type[1] + "&" + option_type[2] + "_d=" + str(
-    d) + "_X0=" + str(x0).replace(".", "p") + "_N=" + str(N) + "_seed=" + str(global_seed) + "/"
-print("\n directory: ", directory, "\n")
-try:
-    os.makedirs(directory)
-except OSError as e:
-    if e.errno != errno.EEXIST:
-        raise
+# directory = "Results/option=" + option_type[0] + "&" + option_type[1] + "&" + option_type[2] + "_d=" + str(
+#     d) + "_X0=" + str(x0).replace(".", "p") + "_N=" + str(N) + "_seed=" + str(global_seed) + "/"
+# print("\n directory: ", directory, "\n")
+# try:
+#     os.makedirs(directory)
+# except OSError as e:
+#     if e.errno != errno.EEXIST:
+#         raise
 
 control_tol = 1e-5
 payoff_tol = 1e-8
@@ -98,9 +91,9 @@ updaten = 2
 
 num_channels = 3
 batch_size = 200
-n_relaxstep = 150  # Monitor the first few steps closely
-n_decaystep = 350
-n_totalstep = 600
+n_relaxstep = 1  # Monitor the first few steps closely
+n_decaystep = 1
+n_totalstep = 100
 simulation_size = n_totalstep * num_channels * batch_size
 simulation_index = np.arange(simulation_size, dtype=int)
 print(" Simulation size: ", simulation_size)

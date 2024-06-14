@@ -1,0 +1,801 @@
+ Number of CPUs:  4
+ Simulation size:  60000
+
+ AmericanOption, initialization, phase 1 : 
+   0 (0.00, 0.01), 1 (0.00, 0.01), 2 (0.00, 0.01), 3 (0.00, 0.01), 4 (0.00, 0.01), 5 (0.00, 0.01), 6 (0.00, 0.01), 7 (0.00, 0.01), 8 (0.00, 0.01), 9 (0.00, 0.01), 10 (0.00, 0.01), 
+ evolution_state, time:  0.12
+
+ AmericanOption, initialization, phase 2 : 
+   0 (0.01), 1 (0.01), 2 (0.01), 3 (0.01), 4 (0.01), 5 (0.01), 6 (0.01), 7 (0.01), 8 (0.01), 9 (0.01), 10 (0.01), 
+ initialize_results, time:  0.10
+
+
+************** Main Script: Neural Network **************
+
+
+ Trainable variables in the main neural network  AmerOp : 
+    <tf.Variable 'AmerOp/layer0/batchX/beta:0' shape=(1, 3, 1) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer0/batchX/gamma:0' shape=(1, 3, 1) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer0/batchZ/beta:0' shape=(1, 3, 2) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer0/batchZ/gamma:0' shape=(1, 3, 2) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer1/WX:0' shape=(3, 1, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer1/WZ:0' shape=(3, 2, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer1/batchZ/beta:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer1/batchZ/gamma:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer2/WZ:0' shape=(3, 6, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer2/batchZ/beta:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer2/batchZ/gamma:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer3/WZ:0' shape=(3, 6, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer3/batchZ/beta:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer3/batchZ/gamma:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer4/WZ:0' shape=(3, 6, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer4/batchZ/beta:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer4/batchZ/gamma:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer5/WZ:0' shape=(3, 6, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer5/batchZ/beta:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer5/batchZ/gamma:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer6/WZ:0' shape=(3, 6, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer6/batchZ/beta:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer6/batchZ/gamma:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer7/WZ:0' shape=(3, 6, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer7/batchZ/beta:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer7/batchZ/gamma:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/alpha:0' shape=(1, 3, 1) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer8/WZ:0' shape=(3, 6, 1) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer8/b:0' shape=(1, 3, 1) dtype=float64_ref>
+
+ Global variables in the main neural network  AmerOp : 
+    <tf.Variable 'AmerOp/step:0' shape=() dtype=int32_ref>
+    <tf.Variable 'AmerOp/init_rate:0' shape=() dtype=float64_ref>
+    <tf.Variable 'AmerOp/decay_rate:0' shape=() dtype=float64_ref>
+    <tf.Variable 'AmerOp/n_relaxstep:0' shape=() dtype=int32_ref>
+    <tf.Variable 'AmerOp/n_decaystep:0' shape=() dtype=int32_ref>
+    <tf.Variable 'AmerOp/layer0/batchX/mv_mean:0' shape=(1, 3, 1) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer0/batchX/mv_var:0' shape=(1, 3, 1) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer0/batchX/beta:0' shape=(1, 3, 1) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer0/batchX/gamma:0' shape=(1, 3, 1) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer0/batchZ/mv_mean:0' shape=(1, 3, 2) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer0/batchZ/mv_var:0' shape=(1, 3, 2) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer0/batchZ/beta:0' shape=(1, 3, 2) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer0/batchZ/gamma:0' shape=(1, 3, 2) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer1/WX:0' shape=(3, 1, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer1/WZ:0' shape=(3, 2, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer1/batchZ/mv_mean:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer1/batchZ/mv_var:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer1/batchZ/beta:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer1/batchZ/gamma:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer2/WZ:0' shape=(3, 6, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer2/batchZ/mv_mean:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer2/batchZ/mv_var:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer2/batchZ/beta:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer2/batchZ/gamma:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer3/WZ:0' shape=(3, 6, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer3/batchZ/mv_mean:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer3/batchZ/mv_var:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer3/batchZ/beta:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer3/batchZ/gamma:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer4/WZ:0' shape=(3, 6, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer4/batchZ/mv_mean:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer4/batchZ/mv_var:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer4/batchZ/beta:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer4/batchZ/gamma:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer5/WZ:0' shape=(3, 6, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer5/batchZ/mv_mean:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer5/batchZ/mv_var:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer5/batchZ/beta:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer5/batchZ/gamma:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer6/WZ:0' shape=(3, 6, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer6/batchZ/mv_mean:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer6/batchZ/mv_var:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer6/batchZ/beta:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer6/batchZ/gamma:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer7/WZ:0' shape=(3, 6, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer7/batchZ/mv_mean:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer7/batchZ/mv_var:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer7/batchZ/beta:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer7/batchZ/gamma:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/delta:0' shape=() dtype=float64_ref>
+    <tf.Variable 'AmerOp/alpha:0' shape=(1, 3, 1) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer8/WZ:0' shape=(3, 6, 1) dtype=float64_ref>
+    <tf.Variable 'AmerOp/layer8/b:0' shape=(1, 3, 1) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer0/batchX/beta/COCOB:0' shape=(1, 3, 1) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer0/batchX/beta/COCOB_1:0' shape=(1, 3, 1) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer0/batchX/beta/COCOB_2:0' shape=(1, 3, 1) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer0/batchX/beta/COCOB_3:0' shape=(1, 3, 1) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer0/batchX/beta/COCOB_4:0' shape=(1, 3, 1) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer0/batchX/gamma/COCOB:0' shape=(1, 3, 1) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer0/batchX/gamma/COCOB_1:0' shape=(1, 3, 1) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer0/batchX/gamma/COCOB_2:0' shape=(1, 3, 1) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer0/batchX/gamma/COCOB_3:0' shape=(1, 3, 1) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer0/batchX/gamma/COCOB_4:0' shape=(1, 3, 1) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer0/batchZ/beta/COCOB:0' shape=(1, 3, 2) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer0/batchZ/beta/COCOB_1:0' shape=(1, 3, 2) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer0/batchZ/beta/COCOB_2:0' shape=(1, 3, 2) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer0/batchZ/beta/COCOB_3:0' shape=(1, 3, 2) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer0/batchZ/beta/COCOB_4:0' shape=(1, 3, 2) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer0/batchZ/gamma/COCOB:0' shape=(1, 3, 2) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer0/batchZ/gamma/COCOB_1:0' shape=(1, 3, 2) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer0/batchZ/gamma/COCOB_2:0' shape=(1, 3, 2) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer0/batchZ/gamma/COCOB_3:0' shape=(1, 3, 2) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer0/batchZ/gamma/COCOB_4:0' shape=(1, 3, 2) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer1/WX/COCOB:0' shape=(3, 1, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer1/WX/COCOB_1:0' shape=(3, 1, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer1/WX/COCOB_2:0' shape=(3, 1, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer1/WX/COCOB_3:0' shape=(3, 1, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer1/WX/COCOB_4:0' shape=(3, 1, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer1/WZ/COCOB:0' shape=(3, 2, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer1/WZ/COCOB_1:0' shape=(3, 2, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer1/WZ/COCOB_2:0' shape=(3, 2, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer1/WZ/COCOB_3:0' shape=(3, 2, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer1/WZ/COCOB_4:0' shape=(3, 2, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer1/batchZ/beta/COCOB:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer1/batchZ/beta/COCOB_1:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer1/batchZ/beta/COCOB_2:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer1/batchZ/beta/COCOB_3:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer1/batchZ/beta/COCOB_4:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer1/batchZ/gamma/COCOB:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer1/batchZ/gamma/COCOB_1:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer1/batchZ/gamma/COCOB_2:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer1/batchZ/gamma/COCOB_3:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer1/batchZ/gamma/COCOB_4:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer2/WZ/COCOB:0' shape=(3, 6, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer2/WZ/COCOB_1:0' shape=(3, 6, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer2/WZ/COCOB_2:0' shape=(3, 6, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer2/WZ/COCOB_3:0' shape=(3, 6, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer2/WZ/COCOB_4:0' shape=(3, 6, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer2/batchZ/beta/COCOB:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer2/batchZ/beta/COCOB_1:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer2/batchZ/beta/COCOB_2:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer2/batchZ/beta/COCOB_3:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer2/batchZ/beta/COCOB_4:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer2/batchZ/gamma/COCOB:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer2/batchZ/gamma/COCOB_1:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer2/batchZ/gamma/COCOB_2:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer2/batchZ/gamma/COCOB_3:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer2/batchZ/gamma/COCOB_4:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer3/WZ/COCOB:0' shape=(3, 6, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer3/WZ/COCOB_1:0' shape=(3, 6, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer3/WZ/COCOB_2:0' shape=(3, 6, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer3/WZ/COCOB_3:0' shape=(3, 6, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer3/WZ/COCOB_4:0' shape=(3, 6, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer3/batchZ/beta/COCOB:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer3/batchZ/beta/COCOB_1:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer3/batchZ/beta/COCOB_2:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer3/batchZ/beta/COCOB_3:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer3/batchZ/beta/COCOB_4:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer3/batchZ/gamma/COCOB:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer3/batchZ/gamma/COCOB_1:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer3/batchZ/gamma/COCOB_2:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer3/batchZ/gamma/COCOB_3:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer3/batchZ/gamma/COCOB_4:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer4/WZ/COCOB:0' shape=(3, 6, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer4/WZ/COCOB_1:0' shape=(3, 6, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer4/WZ/COCOB_2:0' shape=(3, 6, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer4/WZ/COCOB_3:0' shape=(3, 6, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer4/WZ/COCOB_4:0' shape=(3, 6, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer4/batchZ/beta/COCOB:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer4/batchZ/beta/COCOB_1:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer4/batchZ/beta/COCOB_2:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer4/batchZ/beta/COCOB_3:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer4/batchZ/beta/COCOB_4:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer4/batchZ/gamma/COCOB:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer4/batchZ/gamma/COCOB_1:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer4/batchZ/gamma/COCOB_2:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer4/batchZ/gamma/COCOB_3:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer4/batchZ/gamma/COCOB_4:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer5/WZ/COCOB:0' shape=(3, 6, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer5/WZ/COCOB_1:0' shape=(3, 6, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer5/WZ/COCOB_2:0' shape=(3, 6, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer5/WZ/COCOB_3:0' shape=(3, 6, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer5/WZ/COCOB_4:0' shape=(3, 6, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer5/batchZ/beta/COCOB:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer5/batchZ/beta/COCOB_1:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer5/batchZ/beta/COCOB_2:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer5/batchZ/beta/COCOB_3:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer5/batchZ/beta/COCOB_4:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer5/batchZ/gamma/COCOB:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer5/batchZ/gamma/COCOB_1:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer5/batchZ/gamma/COCOB_2:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer5/batchZ/gamma/COCOB_3:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer5/batchZ/gamma/COCOB_4:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer6/WZ/COCOB:0' shape=(3, 6, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer6/WZ/COCOB_1:0' shape=(3, 6, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer6/WZ/COCOB_2:0' shape=(3, 6, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer6/WZ/COCOB_3:0' shape=(3, 6, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer6/WZ/COCOB_4:0' shape=(3, 6, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer6/batchZ/beta/COCOB:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer6/batchZ/beta/COCOB_1:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer6/batchZ/beta/COCOB_2:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer6/batchZ/beta/COCOB_3:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer6/batchZ/beta/COCOB_4:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer6/batchZ/gamma/COCOB:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer6/batchZ/gamma/COCOB_1:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer6/batchZ/gamma/COCOB_2:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer6/batchZ/gamma/COCOB_3:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer6/batchZ/gamma/COCOB_4:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer7/WZ/COCOB:0' shape=(3, 6, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer7/WZ/COCOB_1:0' shape=(3, 6, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer7/WZ/COCOB_2:0' shape=(3, 6, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer7/WZ/COCOB_3:0' shape=(3, 6, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer7/WZ/COCOB_4:0' shape=(3, 6, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer7/batchZ/beta/COCOB:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer7/batchZ/beta/COCOB_1:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer7/batchZ/beta/COCOB_2:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer7/batchZ/beta/COCOB_3:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer7/batchZ/beta/COCOB_4:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer7/batchZ/gamma/COCOB:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer7/batchZ/gamma/COCOB_1:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer7/batchZ/gamma/COCOB_2:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer7/batchZ/gamma/COCOB_3:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer7/batchZ/gamma/COCOB_4:0' shape=(1, 3, 6) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/alpha/COCOB:0' shape=(1, 3, 1) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/alpha/COCOB_1:0' shape=(1, 3, 1) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/alpha/COCOB_2:0' shape=(1, 3, 1) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/alpha/COCOB_3:0' shape=(1, 3, 1) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/alpha/COCOB_4:0' shape=(1, 3, 1) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer8/WZ/COCOB:0' shape=(3, 6, 1) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer8/WZ/COCOB_1:0' shape=(3, 6, 1) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer8/WZ/COCOB_2:0' shape=(3, 6, 1) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer8/WZ/COCOB_3:0' shape=(3, 6, 1) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer8/WZ/COCOB_4:0' shape=(3, 6, 1) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer8/b/COCOB:0' shape=(1, 3, 1) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer8/b/COCOB_1:0' shape=(1, 3, 1) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer8/b/COCOB_2:0' shape=(1, 3, 1) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer8/b/COCOB_3:0' shape=(1, 3, 1) dtype=float64_ref>
+    <tf.Variable 'AmerOp/AmerOp/layer8/b/COCOB_4:0' shape=(1, 3, 1) dtype=float64_ref>
+
+
+************** n =  9  **************
+
+
+ **** n =  9 , Pre-processing 
+
+ **** n =  9 , Neural Network 
+
+ ****  AmerOp , Training : 
+
+ ****  AmerOp , Adam Optimization : 
+ step :     1 ,  learning rate:  0.010000 ,  batch learning rate:  1.000000 ,  b :  0.000000 ,  gradY :  -0.567802 ,  regloss :  102031.053965
+ step :     2 ,  learning rate:  0.010000 ,  batch learning rate:  -0.000000 ,  b :  0.010000 ,  gradY :  -0.559805 ,  regloss :  82476.694366
+ step :     3 ,  learning rate:  0.000100 ,  batch learning rate:  -0.000000 ,  b :  0.016505 ,  gradY :  -0.588443 ,  regloss :  101292.929490
+ step :     4 ,  learning rate:  0.000100 ,  batch learning rate:  -0.000000 ,  b :  0.022446 ,  gradY :  -0.579467 ,  regloss :  80243.374457
+ step :     5 ,  learning rate:  0.000100 ,  batch learning rate:  -0.000000 ,  b :  0.029789 ,  gradY :  -0.589641 ,  regloss :  57911.154494
+ step :     6 ,  learning rate:  0.000100 ,  batch learning rate:  -0.000000 ,  b :  0.036408 ,  gradY :  -0.587925 ,  regloss :  55372.486506
+ step :     7 ,  learning rate:  0.000100 ,  batch learning rate:  -0.000000 ,  b :  0.044167 ,  gradY :  -0.609842 ,  regloss :  101632.685095
+ step :     8 ,  learning rate:  0.000100 ,  batch learning rate:  -0.000000 ,  b :  0.052783 ,  gradY :  -0.544025 ,  regloss :  32488.451753
+ step :     9 ,  learning rate:  0.000100 ,  batch learning rate:  -0.000000 ,  b :  0.058529 ,  gradY :  -0.577564 ,  regloss :  49017.990962
+ step :    10 ,  learning rate:  0.000100 ,  batch learning rate:  -0.000000 ,  b :  0.066514 ,  gradY :  -0.597239 ,  regloss :  54574.417481
+ step :    11 ,  learning rate:  0.000100 ,  batch learning rate:  -0.000000 ,  b :  0.075680 ,  gradY :  -0.583999 ,  regloss :  68636.796991
+ step :    12 ,  learning rate:  0.000100 ,  batch learning rate:  -0.000000 ,  b :  0.086222 ,  gradY :  -0.608520 ,  regloss :  54967.673631
+ step :    13 ,  learning rate:  0.000100 ,  batch learning rate:  -0.000000 ,  b :  0.098577 ,  gradY :  -0.563302 ,  regloss :  36007.972921
+ step :    14 ,  learning rate:  0.000100 ,  batch learning rate:  -0.000000 ,  b :  0.106222 ,  gradY :  -0.600537 ,  regloss :  53273.616777
+ step :    15 ,  learning rate:  0.000100 ,  batch learning rate:  -0.000000 ,  b :  0.119563 ,  gradY :  -0.570947 ,  regloss :  58001.860096
+ step :    16 ,  learning rate:  0.000100 ,  batch learning rate:  -0.000000 ,  b :  0.134240 ,  gradY :  -0.598897 ,  regloss :  59826.644340
+ step :    17 ,  learning rate:  0.000100 ,  batch learning rate:  -0.000000 ,  b :  0.153008 ,  gradY :  -0.592810 ,  regloss :  81514.852091
+ step :    18 ,  learning rate:  0.000100 ,  batch learning rate:  -0.000000 ,  b :  0.144313 ,  gradY :  -0.546059 ,  regloss :  67074.603193
+ step :    19 ,  learning rate:  0.000100 ,  batch learning rate:  -0.000000 ,  b :  0.158326 ,  gradY :  -0.581592 ,  regloss :  69407.981985
+ step :    20 ,  learning rate:  0.000100 ,  batch learning rate:  -0.000000 ,  b :  0.175919 ,  gradY :  -0.592370 ,  regloss :  36260.609719
+ step :    21 ,  learning rate:  0.000100 ,  batch learning rate:  -0.000000 ,  b :  0.185400 ,  gradY :  -0.552675 ,  regloss :  71249.650044
+ step :    41 ,  learning rate:  0.000100 ,  batch learning rate:  -0.000000 ,  b :  1.021883 ,  gradY :  -0.572370 ,  regloss :  43341.923025
+ step :    61 ,  learning rate:  0.000100 ,  batch learning rate:  -0.000000 ,  b :  4.214808 ,  gradY :  -0.595556 ,  regloss :  38900.874056
+ step :    81 ,  learning rate:  0.000100 ,  batch learning rate:  -0.000000 ,  b :  5.730428 ,  gradY :  -0.577120 ,  regloss :  37684.345615
+ step :   100 ,  learning rate:  0.000100 ,  batch learning rate:  -0.000000 ,  b :  5.713515 ,  gradY :  -0.568250 ,  regloss :  34333.363287
+
+   time:  6.61
+
+ ****  AmerOp , Training : 
+
+ ****  AmerOp , Adam Optimization : 
+ step :     1 ,  learning rate:  0.010000 ,  batch learning rate:  1.000000 ,  b :  5.625248 ,  gradY :  -0.576035 ,  regloss :  92430.631829
+ step :     2 ,  learning rate:  0.010000 ,  batch learning rate:  0.000000 ,  b :  6.193758 ,  gradY :  -0.583856 ,  regloss :  45304.609526
+ step :     3 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  5.525027 ,  gradY :  -0.595072 ,  regloss :  50892.513291
+ step :     4 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  5.609271 ,  gradY :  -0.592886 ,  regloss :  67230.787771
+ step :     5 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  5.535637 ,  gradY :  -0.567561 ,  regloss :  62158.999592
+ step :     6 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  5.183428 ,  gradY :  -0.578199 ,  regloss :  32042.169233
+ step :     7 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  5.190971 ,  gradY :  -0.594433 ,  regloss :  80375.930800
+ step :     8 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  5.919929 ,  gradY :  -0.575690 ,  regloss :  69783.005629
+ step :     9 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.143849 ,  gradY :  -0.584489 ,  regloss :  37257.466804
+ step :    10 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.213234 ,  gradY :  -0.584507 ,  regloss :  29298.239243
+ step :    11 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.367607 ,  gradY :  -0.565503 ,  regloss :  65569.686956
+ step :    12 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.683204 ,  gradY :  -0.577103 ,  regloss :  76689.321045
+ step :    13 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  7.519889 ,  gradY :  -0.581707 ,  regloss :  43838.590321
+ step :    14 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  7.191965 ,  gradY :  -0.566141 ,  regloss :  64506.001720
+ step :    15 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  8.423345 ,  gradY :  -0.540664 ,  regloss :  51961.615362
+ step :    16 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  7.603160 ,  gradY :  -0.570482 ,  regloss :  37343.195856
+ step :    17 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  7.733076 ,  gradY :  -0.570157 ,  regloss :  34363.708934
+ step :    18 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  7.791971 ,  gradY :  -0.600864 ,  regloss :  56926.668801
+ step :    19 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  7.672337 ,  gradY :  -0.563435 ,  regloss :  52508.187514
+ step :    20 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  7.898995 ,  gradY :  -0.557391 ,  regloss :  34945.340284
+ step :    21 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  8.260570 ,  gradY :  -0.593130 ,  regloss :  39887.824213
+ step :    41 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  9.234671 ,  gradY :  -0.567200 ,  regloss :  43371.652199
+ step :    61 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.374057 ,  gradY :  -0.561199 ,  regloss :  33117.204011
+ step :    81 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  8.575429 ,  gradY :  -0.551179 ,  regloss :  40266.025144
+ step :   100 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  10.162607 ,  gradY :  -0.598424 ,  regloss :  50534.891876
+
+   time:  1.41
+
+ Ensemble Average :  9
+ time: 1.23
+
+ **** n =  9 , Post-processing 
+
+ Evaluate control (exercise boundary) : 
+  Number of in-the-money points :  27007
+
+ Evaluate Y and gradY, timestep-wise : 
+
+
+************** n =  8  **************
+
+
+ **** n =  8 , Pre-processing 
+
+ **** n =  8 , Neural Network 
+
+ ****  AmerOp , Training : 
+
+ ****  AmerOp , Adam Optimization : 
+ step :     1 ,  learning rate:  0.010000 ,  batch learning rate:  1.000000 ,  b :  10.713873 ,  gradY :  -0.590987 ,  regloss :  150424.106640
+ step :     2 ,  learning rate:  0.010000 ,  batch learning rate:  0.000000 ,  b :  2.217753 ,  gradY :  -0.612087 ,  regloss :  109241.519546
+ step :     3 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  2.424777 ,  gradY :  -0.592133 ,  regloss :  88692.508570
+ step :     4 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  2.329804 ,  gradY :  -0.582312 ,  regloss :  97453.123340
+ step :     5 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  2.537200 ,  gradY :  -0.560386 ,  regloss :  116159.435319
+ step :     6 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  2.750172 ,  gradY :  -0.557293 ,  regloss :  88674.142291
+ step :     7 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  2.746353 ,  gradY :  -0.592580 ,  regloss :  100454.268338
+ step :     8 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  2.438028 ,  gradY :  -0.582301 ,  regloss :  85414.855651
+ step :     9 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  2.335734 ,  gradY :  -0.571458 ,  regloss :  100906.145107
+ step :    10 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  1.724176 ,  gradY :  -0.583550 ,  regloss :  94785.534049
+ step :    11 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  1.623100 ,  gradY :  -0.573391 ,  regloss :  122810.783635
+ step :    12 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  1.268530 ,  gradY :  -0.550243 ,  regloss :  74867.656496
+ step :    13 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  1.347882 ,  gradY :  -0.581263 ,  regloss :  101078.791325
+ step :    14 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  0.940109 ,  gradY :  -0.576529 ,  regloss :  58306.633344
+ step :    15 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  1.027337 ,  gradY :  -0.597068 ,  regloss :  86945.792647
+ step :    16 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  1.070136 ,  gradY :  -0.549745 ,  regloss :  82168.762059
+ step :    17 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  1.191554 ,  gradY :  -0.611214 ,  regloss :  91390.512642
+ step :    18 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  1.178081 ,  gradY :  -0.562724 ,  regloss :  72143.331018
+ step :    19 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  1.330714 ,  gradY :  -0.579427 ,  regloss :  86842.465958
+ step :    20 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  1.433426 ,  gradY :  -0.580556 ,  regloss :  76658.633939
+ step :    21 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  1.477704 ,  gradY :  -0.594886 ,  regloss :  95951.366965
+ step :    41 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  2.132964 ,  gradY :  -0.597775 ,  regloss :  97919.945307
+ step :    61 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  2.802162 ,  gradY :  -0.587189 ,  regloss :  87865.493320
+ step :    81 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  4.251592 ,  gradY :  -0.560293 ,  regloss :  57828.570421
+ step :   100 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  5.574104 ,  gradY :  -0.584210 ,  regloss :  73137.025626
+
+   time:  1.38
+
+ Ensemble Average :  1
+ time: 0.50
+
+ Ensemble Average :  2
+ time: 0.50
+
+ Ensemble Average :  3
+ time: 0.51
+
+ Ensemble Average :  4
+ time: 0.51
+
+ Ensemble Average :  5
+ time: 0.50
+
+ Ensemble Average :  6
+ time: 0.51
+
+ Ensemble Average :  7
+ time: 0.51
+
+ Ensemble Average :  8
+ time: 0.50
+
+ **** n =  8 , Post-processing 
+
+ Evaluate control (exercise boundary) : 
+  Number of in-the-money points :  22880
+
+ Evaluate Y and gradY, timestep-wise : 
+
+
+************** n =  7  **************
+
+
+ **** n =  7 , Pre-processing 
+
+ **** n =  7 , Neural Network 
+
+ ****  AmerOp , Training : 
+
+ ****  AmerOp , Adam Optimization : 
+ step :     1 ,  learning rate:  0.010000 ,  batch learning rate:  1.000000 ,  b :  5.733556 ,  gradY :  -0.540994 ,  regloss :  64961.691326
+ step :     2 ,  learning rate:  0.010000 ,  batch learning rate:  0.000000 ,  b :  5.884171 ,  gradY :  -0.531313 ,  regloss :  69304.221743
+ step :     3 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.007652 ,  gradY :  -0.578788 ,  regloss :  67572.438003
+ step :     4 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.143779 ,  gradY :  -0.561693 ,  regloss :  75434.299815
+ step :     5 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.298675 ,  gradY :  -0.575284 ,  regloss :  66587.906861
+ step :     6 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.422507 ,  gradY :  -0.558726 ,  regloss :  82020.380186
+ step :     7 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.512499 ,  gradY :  -0.548986 ,  regloss :  78525.456989
+ step :     8 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.654167 ,  gradY :  -0.568842 ,  regloss :  61045.486301
+ step :     9 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.642424 ,  gradY :  -0.547437 ,  regloss :  63787.139297
+ step :    10 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.660777 ,  gradY :  -0.542118 ,  regloss :  67010.305632
+ step :    11 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.696481 ,  gradY :  -0.593215 ,  regloss :  58394.561178
+ step :    12 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.705983 ,  gradY :  -0.572159 ,  regloss :  67889.950656
+ step :    13 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.751978 ,  gradY :  -0.552287 ,  regloss :  68562.329854
+ step :    14 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.765938 ,  gradY :  -0.554712 ,  regloss :  70781.879148
+ step :    15 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.622874 ,  gradY :  -0.584888 ,  regloss :  64077.801629
+ step :    16 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.594183 ,  gradY :  -0.548842 ,  regloss :  65647.132948
+ step :    17 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.572768 ,  gradY :  -0.587606 ,  regloss :  71509.041116
+ step :    18 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.661413 ,  gradY :  -0.587761 ,  regloss :  61297.182588
+ step :    19 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.607573 ,  gradY :  -0.525834 ,  regloss :  67060.943188
+ step :    20 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.565274 ,  gradY :  -0.573484 ,  regloss :  67239.126823
+ step :    21 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.614167 ,  gradY :  -0.574089 ,  regloss :  70255.535160
+ step :    41 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  7.014362 ,  gradY :  -0.573116 ,  regloss :  64212.031420
+ step :    61 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  7.059617 ,  gradY :  -0.572462 ,  regloss :  68281.729766
+ step :    81 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  7.134335 ,  gradY :  -0.567895 ,  regloss :  60982.304058
+ step :   100 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  7.460111 ,  gradY :  -0.538920 ,  regloss :  59278.241598
+
+   time:  1.40
+
+ Ensemble Average :  7
+ time: 0.50
+
+ **** n =  7 , Post-processing 
+
+ Evaluate control (exercise boundary) : 
+  Number of in-the-money points :  19714
+
+ Evaluate Y and gradY, timestep-wise : 
+
+
+************** n =  6  **************
+
+
+ **** n =  6 , Pre-processing 
+
+ **** n =  6 , Neural Network 
+
+ ****  AmerOp , Training : 
+
+ ****  AmerOp , Adam Optimization : 
+ step :     1 ,  learning rate:  0.010000 ,  batch learning rate:  1.000000 ,  b :  7.488850 ,  gradY :  -0.590665 ,  regloss :  89484.753413
+ step :     2 ,  learning rate:  0.010000 ,  batch learning rate:  0.000000 ,  b :  6.720570 ,  gradY :  -0.452430 ,  regloss :  475471.820490
+ step :     3 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  5.358707 ,  gradY :  -0.575644 ,  regloss :  66200.861256
+ step :     4 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  5.157816 ,  gradY :  -0.553189 ,  regloss :  85306.963555
+ step :     5 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  5.230298 ,  gradY :  -0.554978 ,  regloss :  69797.685268
+ step :     6 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  5.241244 ,  gradY :  -0.585974 ,  regloss :  68970.360738
+ step :     7 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  5.316946 ,  gradY :  -0.576713 ,  regloss :  81756.101483
+ step :     8 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  5.223708 ,  gradY :  -0.580773 ,  regloss :  66456.742790
+ step :     9 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  5.158768 ,  gradY :  -0.576385 ,  regloss :  92243.841245
+ step :    10 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  5.275753 ,  gradY :  -0.592237 ,  regloss :  86260.453064
+ step :    11 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  5.235643 ,  gradY :  -0.586259 ,  regloss :  68478.744754
+ step :    12 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  5.410150 ,  gradY :  -0.529924 ,  regloss :  81847.514745
+ step :    13 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  5.505334 ,  gradY :  -0.579802 ,  regloss :  64713.797070
+ step :    14 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  5.343724 ,  gradY :  -0.562409 ,  regloss :  68968.707273
+ step :    15 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  5.393751 ,  gradY :  -0.582496 ,  regloss :  69241.107179
+ step :    16 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  5.375373 ,  gradY :  -0.599342 ,  regloss :  64627.458386
+ step :    17 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  5.419147 ,  gradY :  -0.562821 ,  regloss :  78034.523758
+ step :    18 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  5.408206 ,  gradY :  -0.579205 ,  regloss :  65235.553285
+ step :    19 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  5.267760 ,  gradY :  -0.554401 ,  regloss :  64331.803736
+ step :    20 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  5.188682 ,  gradY :  -0.569991 ,  regloss :  71495.779198
+ step :    21 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  5.243094 ,  gradY :  -0.568364 ,  regloss :  56321.152984
+ step :    41 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  5.519814 ,  gradY :  -0.583856 ,  regloss :  66051.489546
+ step :    61 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  5.802410 ,  gradY :  -0.581961 ,  regloss :  57958.806319
+ step :    81 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.180155 ,  gradY :  -0.572570 ,  regloss :  71606.617473
+ step :   100 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.388406 ,  gradY :  -0.558104 ,  regloss :  63328.893646
+
+   time:  1.40
+
+ Ensemble Average :  1
+ time: 0.51
+
+ Ensemble Average :  2
+ time: 0.50
+
+ Ensemble Average :  3
+ time: 0.51
+
+ Ensemble Average :  4
+ time: 0.59
+
+ Ensemble Average :  5
+ time: 0.50
+
+ Ensemble Average :  6
+ time: 0.60
+
+ **** n =  6 , Post-processing 
+
+ Evaluate control (exercise boundary) : 
+  Number of in-the-money points :  15786
+
+ Evaluate Y and gradY, timestep-wise : 
+
+
+************** n =  5  **************
+
+
+ **** n =  5 , Pre-processing 
+
+ **** n =  5 , Neural Network 
+
+ ****  AmerOp , Training : 
+
+ ****  AmerOp , Adam Optimization : 
+ step :     1 ,  learning rate:  0.010000 ,  batch learning rate:  1.000000 ,  b :  6.381469 ,  gradY :  -0.540522 ,  regloss :  75345.035144
+ step :     2 ,  learning rate:  0.010000 ,  batch learning rate:  0.000000 ,  b :  6.476472 ,  gradY :  -0.574021 ,  regloss :  68764.183269
+ step :     3 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.527106 ,  gradY :  -0.555149 ,  regloss :  85587.733825
+ step :     4 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.617234 ,  gradY :  -0.557786 ,  regloss :  74838.912976
+ step :     5 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.658875 ,  gradY :  -0.528363 ,  regloss :  71167.786127
+ step :     6 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.668721 ,  gradY :  -0.557479 ,  regloss :  85574.925211
+ step :     7 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.756689 ,  gradY :  -0.580807 ,  regloss :  70484.522857
+ step :     8 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.799635 ,  gradY :  -0.549755 ,  regloss :  70718.441128
+ step :     9 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.757070 ,  gradY :  -0.569170 ,  regloss :  83633.647512
+ step :    10 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.774769 ,  gradY :  -0.566171 ,  regloss :  63522.689181
+ step :    11 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.825998 ,  gradY :  -0.566953 ,  regloss :  77052.638445
+ step :    12 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.785085 ,  gradY :  -0.591313 ,  regloss :  73156.195170
+ step :    13 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.788355 ,  gradY :  -0.557964 ,  regloss :  71719.403816
+ step :    14 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.734955 ,  gradY :  -0.578808 ,  regloss :  79971.245918
+ step :    15 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.672214 ,  gradY :  -0.549236 ,  regloss :  70630.044632
+ step :    16 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.637643 ,  gradY :  -0.573103 ,  regloss :  69394.834996
+ step :    17 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.562837 ,  gradY :  -0.554511 ,  regloss :  91363.068399
+ step :    18 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.629941 ,  gradY :  -0.551533 ,  regloss :  75730.055818
+ step :    19 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.681201 ,  gradY :  -0.598382 ,  regloss :  74983.475523
+ step :    20 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.699519 ,  gradY :  -0.585670 ,  regloss :  68928.727077
+ step :    21 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.673238 ,  gradY :  -0.568899 ,  regloss :  75800.069612
+ step :    41 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.374790 ,  gradY :  -0.551731 ,  regloss :  74088.206945
+ step :    61 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.502639 ,  gradY :  -0.560421 ,  regloss :  94250.218036
+ step :    81 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.583634 ,  gradY :  -0.582723 ,  regloss :  69426.986545
+ step :   100 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.809229 ,  gradY :  -0.582559 ,  regloss :  76915.500512
+
+   time:  1.47
+
+ Ensemble Average :  5
+ time: 0.50
+
+ **** n =  5 , Post-processing 
+
+ Evaluate control (exercise boundary) : 
+  Number of in-the-money points :  12681
+
+ Evaluate Y and gradY, timestep-wise : 
+
+
+************** n =  4  **************
+
+
+ **** n =  4 , Pre-processing 
+
+ **** n =  4 , Neural Network 
+
+ ****  AmerOp , Training : 
+
+ ****  AmerOp , Adam Optimization : 
+ step :     1 ,  learning rate:  0.010000 ,  batch learning rate:  1.000000 ,  b :  6.788647 ,  gradY :  -0.577435 ,  regloss :  91715.875962
+ step :     2 ,  learning rate:  0.010000 ,  batch learning rate:  0.000000 ,  b :  6.290102 ,  gradY :  -0.571836 ,  regloss :  87370.194145
+ step :     3 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.242527 ,  gradY :  -0.564516 ,  regloss :  87793.039767
+ step :     4 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.187804 ,  gradY :  -0.575814 ,  regloss :  87437.390363
+ step :     5 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.130928 ,  gradY :  -0.589626 ,  regloss :  87488.354847
+ step :     6 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.108574 ,  gradY :  -0.545154 ,  regloss :  80008.021920
+ step :     7 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.084940 ,  gradY :  -0.569959 ,  regloss :  74431.758258
+ step :     8 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.073891 ,  gradY :  -0.556050 ,  regloss :  76553.869817
+ step :     9 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.161052 ,  gradY :  -0.583546 ,  regloss :  82663.872419
+ step :    10 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.049161 ,  gradY :  -0.577847 ,  regloss :  80512.604027
+ step :    11 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.028767 ,  gradY :  -0.565816 ,  regloss :  77726.702933
+ step :    12 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  5.981957 ,  gradY :  -0.565157 ,  regloss :  83542.794780
+ step :    13 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.019238 ,  gradY :  -0.562127 ,  regloss :  89261.463805
+ step :    14 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.296257 ,  gradY :  -0.567645 ,  regloss :  77489.987222
+ step :    15 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.179764 ,  gradY :  -0.563261 ,  regloss :  82128.244768
+ step :    16 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.103533 ,  gradY :  -0.584257 ,  regloss :  85960.002378
+ step :    17 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.233726 ,  gradY :  -0.573758 ,  regloss :  84409.586744
+ step :    18 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.155084 ,  gradY :  -0.588922 ,  regloss :  79124.848645
+ step :    19 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.063362 ,  gradY :  -0.571384 ,  regloss :  77455.201087
+ step :    20 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  5.929822 ,  gradY :  -0.575857 ,  regloss :  85840.377116
+ step :    21 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  5.927940 ,  gradY :  -0.568391 ,  regloss :  77509.630457
+ step :    41 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  5.940191 ,  gradY :  -0.567072 ,  regloss :  87721.224784
+ step :    61 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.358725 ,  gradY :  -0.568623 ,  regloss :  89899.767478
+ step :    81 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.249758 ,  gradY :  -0.538981 ,  regloss :  78593.143714
+ step :   100 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.517164 ,  gradY :  -0.562901 ,  regloss :  77151.419984
+
+   time:  1.44
+
+ Ensemble Average :  1
+ time: 0.50
+
+ Ensemble Average :  2
+ time: 0.50
+
+ Ensemble Average :  3
+ time: 0.51
+
+ Ensemble Average :  4
+ time: 0.51
+
+ **** n =  4 , Post-processing 
+
+ Evaluate control (exercise boundary) : 
+  Number of in-the-money points :  10961
+
+ Evaluate Y and gradY, timestep-wise : 
+
+
+************** n =  3  **************
+
+
+ **** n =  3 , Pre-processing 
+
+ **** n =  3 , Neural Network 
+
+ ****  AmerOp , Training : 
+
+ ****  AmerOp , Adam Optimization : 
+ step :     1 ,  learning rate:  0.010000 ,  batch learning rate:  1.000000 ,  b :  6.412286 ,  gradY :  -0.552757 ,  regloss :  87944.106850
+ step :     2 ,  learning rate:  0.010000 ,  batch learning rate:  0.000000 ,  b :  6.509198 ,  gradY :  -0.571102 ,  regloss :  98495.381891
+ step :     3 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.687463 ,  gradY :  -0.555264 ,  regloss :  87481.495247
+ step :     4 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.764600 ,  gradY :  -0.556168 ,  regloss :  89535.648098
+ step :     5 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.926581 ,  gradY :  -0.555992 ,  regloss :  75029.141283
+ step :     6 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.928203 ,  gradY :  -0.552118 ,  regloss :  88134.168553
+ step :     7 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  7.054304 ,  gradY :  -0.573052 ,  regloss :  83990.796920
+ step :     8 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  7.011323 ,  gradY :  -0.563234 ,  regloss :  83118.534716
+ step :     9 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  7.023122 ,  gradY :  -0.564315 ,  regloss :  92811.776018
+ step :    10 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  7.030465 ,  gradY :  -0.558444 ,  regloss :  90002.883387
+ step :    11 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  7.059091 ,  gradY :  -0.564953 ,  regloss :  80324.570836
+ step :    12 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  7.122151 ,  gradY :  -0.560273 ,  regloss :  86240.097895
+ step :    13 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  7.152514 ,  gradY :  -0.568068 ,  regloss :  87167.382819
+ step :    14 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  7.219281 ,  gradY :  -0.560685 ,  regloss :  89838.788159
+ step :    15 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  7.217140 ,  gradY :  -0.566901 ,  regloss :  81510.671272
+ step :    16 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  7.229077 ,  gradY :  -0.568850 ,  regloss :  88515.525351
+ step :    17 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  7.247662 ,  gradY :  -0.551808 ,  regloss :  89068.387345
+ step :    18 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  7.322929 ,  gradY :  -0.576452 ,  regloss :  78341.568019
+ step :    19 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  7.316690 ,  gradY :  -0.571142 ,  regloss :  80370.403044
+ step :    20 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  7.221783 ,  gradY :  -0.574022 ,  regloss :  85999.782282
+ step :    21 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  7.131324 ,  gradY :  -0.565701 ,  regloss :  88785.119940
+ step :    41 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  7.402240 ,  gradY :  -0.572652 ,  regloss :  92387.961582
+ step :    61 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  7.417243 ,  gradY :  -0.571569 ,  regloss :  90124.621561
+ step :    81 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  7.618256 ,  gradY :  -0.567775 ,  regloss :  74966.219204
+ step :   100 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  7.806116 ,  gradY :  -0.573511 ,  regloss :  78243.748511
+
+   time:  1.44
+
+ Ensemble Average :  3
+ time: 0.52
+
+ **** n =  3 , Post-processing 
+
+ Evaluate control (exercise boundary) : 
+  Number of in-the-money points :  7430
+
+ Evaluate Y and gradY, timestep-wise : 
+
+
+************** n =  2  **************
+
+
+ **** n =  2 , Pre-processing 
+
+ **** n =  2 , Neural Network 
+
+ ****  AmerOp , Training : 
+
+ ****  AmerOp , Adam Optimization : 
+ step :     1 ,  learning rate:  0.010000 ,  batch learning rate:  1.000000 ,  b :  7.726081 ,  gradY :  -0.579435 ,  regloss :  110004.589395
+ step :     2 ,  learning rate:  0.010000 ,  batch learning rate:  0.000000 ,  b :  7.437195 ,  gradY :  -0.575955 ,  regloss :  95480.720323
+ step :     3 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  7.106056 ,  gradY :  -0.557453 ,  regloss :  118380.240746
+ step :     4 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.634060 ,  gradY :  -0.572567 ,  regloss :  96395.398002
+ step :     5 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.814733 ,  gradY :  -0.589616 ,  regloss :  115042.589182
+ step :     6 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.755367 ,  gradY :  -0.583822 ,  regloss :  85042.998502
+ step :     7 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.685164 ,  gradY :  -0.568514 ,  regloss :  102668.379956
+ step :     8 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.786711 ,  gradY :  -0.580175 ,  regloss :  100650.813017
+ step :     9 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.876493 ,  gradY :  -0.573993 ,  regloss :  102333.054754
+ step :    10 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.961621 ,  gradY :  -0.564026 ,  regloss :  90022.607286
+ step :    11 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.861443 ,  gradY :  -0.566871 ,  regloss :  108426.608197
+ step :    12 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.858595 ,  gradY :  -0.574910 ,  regloss :  106058.470998
+ step :    13 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.855807 ,  gradY :  -0.571949 ,  regloss :  95075.702070
+ step :    14 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.804540 ,  gradY :  -0.554820 ,  regloss :  94803.442488
+ step :    15 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.858048 ,  gradY :  -0.585183 ,  regloss :  101768.434491
+ step :    16 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.907861 ,  gradY :  -0.568137 ,  regloss :  98244.421175
+ step :    17 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.879464 ,  gradY :  -0.585297 ,  regloss :  101508.267075
+ step :    18 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  6.980477 ,  gradY :  -0.556215 ,  regloss :  114805.687225
+ step :    19 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  7.190129 ,  gradY :  -0.577509 ,  regloss :  104526.326149
+ step :    20 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  7.293705 ,  gradY :  -0.577897 ,  regloss :  88731.655744
+ step :    21 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  7.219488 ,  gradY :  -0.565424 ,  regloss :  100788.176054
+ step :    41 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  7.426144 ,  gradY :  -0.561386 ,  regloss :  96624.891150
+ step :    61 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  7.383353 ,  gradY :  -0.562007 ,  regloss :  90546.835881
+ step :    81 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  7.321647 ,  gradY :  -0.568219 ,  regloss :  99007.934848
+ step :   100 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  7.386510 ,  gradY :  -0.550665 ,  regloss :  85095.449034
+
+   time:  1.43
+
+ Ensemble Average :  1
+ time: 0.51
+
+ Ensemble Average :  2
+ time: 0.50
+
+ **** n =  2 , Post-processing 
+
+ Evaluate control (exercise boundary) : 
+  Number of in-the-money points :  4405
+
+ Evaluate Y and gradY, timestep-wise : 
+
+
+************** n =  1  **************
+
+
+ **** n =  1 , Pre-processing 
+
+ **** n =  1 , Neural Network 
+
+ ****  AmerOp , Training : 
+
+ ****  AmerOp , Adam Optimization : 
+ step :     1 ,  learning rate:  0.010000 ,  batch learning rate:  1.000000 ,  b :  7.477805 ,  gradY :  -0.548882 ,  regloss :  91671.185503
+ step :     2 ,  learning rate:  0.010000 ,  batch learning rate:  0.000000 ,  b :  7.578940 ,  gradY :  -0.545187 ,  regloss :  97171.851963
+ step :     3 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  7.559170 ,  gradY :  -0.546965 ,  regloss :  99154.796734
+ step :     4 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  7.733764 ,  gradY :  -0.560299 ,  regloss :  100455.574914
+ step :     5 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  7.901629 ,  gradY :  -0.570177 ,  regloss :  97352.100293
+ step :     6 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  8.100520 ,  gradY :  -0.550550 ,  regloss :  98847.957084
+ step :     7 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  8.341088 ,  gradY :  -0.556987 ,  regloss :  106428.828088
+ step :     8 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  8.410947 ,  gradY :  -0.552740 ,  regloss :  119684.404567
+ step :     9 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  8.507922 ,  gradY :  -0.554261 ,  regloss :  108261.297179
+ step :    10 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  8.508964 ,  gradY :  -0.552493 ,  regloss :  95313.113239
+ step :    11 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  8.346137 ,  gradY :  -0.554523 ,  regloss :  96210.558725
+ step :    12 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  8.264209 ,  gradY :  -0.556998 ,  regloss :  93169.920838
+ step :    13 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  8.340390 ,  gradY :  -0.559234 ,  regloss :  87688.220399
+ step :    14 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  8.296987 ,  gradY :  -0.561601 ,  regloss :  115809.937654
+ step :    15 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  8.405915 ,  gradY :  -0.567944 ,  regloss :  92590.472501
+ step :    16 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  8.435639 ,  gradY :  -0.552549 ,  regloss :  110169.210493
+ step :    17 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  8.466311 ,  gradY :  -0.550634 ,  regloss :  103182.082529
+ step :    18 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  8.512242 ,  gradY :  -0.545722 ,  regloss :  106622.892115
+ step :    19 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  8.637100 ,  gradY :  -0.566630 ,  regloss :  109534.436955
+ step :    20 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  8.599868 ,  gradY :  -0.562247 ,  regloss :  107105.169508
+ step :    21 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  8.623987 ,  gradY :  -0.570952 ,  regloss :  104830.600489
+ step :    41 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  8.606480 ,  gradY :  -0.559396 ,  regloss :  112959.934649
+ step :    61 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  8.965028 ,  gradY :  -0.566251 ,  regloss :  100561.593932
+ step :    81 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  8.629324 ,  gradY :  -0.560667 ,  regloss :  102718.428239
+ step :   100 ,  learning rate:  0.000010 ,  batch learning rate:  0.000000 ,  b :  8.750175 ,  gradY :  -0.561487 ,  regloss :  95135.762782
+
+   time:  1.46
+
+ Ensemble Average :  1
+ time: 0.59
+
+ **** n =  1 , Post-processing 
+
+ Evaluate control (exercise boundary) : 
+  Number of in-the-money points :  1475
+
+ Evaluate Y and gradY, timestep-wise : 
+
+
+************** n =  0  **************
+
+
+ **** n =  0 , Pre-processing 
+
+ **** n =  0 , Evaluation 
+
+************** Results (Neural Network) **************
+ The point X0 to evaluate is:  [100.]
+ The price at t=0 is:  15.010960 ;  95% CI: [ 14.960987 15.060933 ]
+ The delta at t=0 is:  [-0.562262] 
+
+
+ Evaluate control (exercise boundary) : 
+  Number of in-the-money points :  0
+
+ Evaluate Y and gradY, timestep-wise : 
+
+Total running time :  48.88
+
+
+************** Evaluation of the Entire Model, nu =  0  **************
+
+************** Results (Simulation values) **************
+ The point X0 to evaluate is:  [100.]
+ The price at t=0 is:  15.013477 ;  95% CI: [ 14.903640 15.123314 ]
+ The delta at t=0 is:  [-0.534576] 
+
+
+
+************** Hedging Results (Simulation values) **************
+
+
+ P & L mean:  -0.15458450966830076 , std:  0.24675870055635574

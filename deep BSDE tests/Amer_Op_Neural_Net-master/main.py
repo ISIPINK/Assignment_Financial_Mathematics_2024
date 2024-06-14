@@ -19,7 +19,6 @@ NN = NeuralNet(NN_name="AmerOp", dim_layers=dim_layers)
 
 # Main Script: Neural Network
 with tf.Session(config=session_config) as sess:
-    tf.summary.FileWriter("tf_graph", sess.graph)
     for n in reversed(range(N)):
         print("\n\n************** n = ", n, " **************\n")
         print("\n **** n = ", n, ", Pre-processing ")
