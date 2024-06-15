@@ -280,7 +280,7 @@ class NeuralNet:
         self.Loss = tf.reduce_mean(Res ** 2)
 
     # def optimizer(self):
-    #     # self.Optimizer = tf.train.AdamOptimizer(learning_rate=self.rate)
+    #     self.Optimizer = tf.train.AdamOptimizer(learning_rate=self.rate)
     #     # self.Optimizer = tf.train.RMSPropOptimizer(learning_rate=self.rate)
     #     Grad_Var_list = self.Optimizer.compute_gradients(
     #         self.Loss, var_list=self.trainable_variables)
@@ -292,7 +292,7 @@ class NeuralNet:
     #         Grad_Var_list, global_step=self.step)
 
     def optimizer(self):
-        self.Optimizer = COCOB()
+        self.Optimizer = COCOB(alpha=n_decaystep)
         Grad_Var_list = self.Optimizer.compute_gradients(
             self.Loss, var_list=self.trainable_variables)
         Grad_Var_list = [(tf.clip_by_value(Grad, -10, 10), Var)

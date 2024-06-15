@@ -68,7 +68,13 @@ K = 110
 x0 = 100
 X0 = np.array([[x0] * d], dtype=np_floattype)
 T = 1.0
-N = 10
+N = 30
+
+dim_h = 6
+num_layers = 6
+dim_layers = num_layers*[d+dim_h]
+
+dim_layers = [None] + dim_layers + [1]
 
 ###############################################
 # directory = "Results/option=" + option_type[0] + "&" + option_type[1] + "&" + option_type[2] + "_d=" + str(
@@ -89,10 +95,10 @@ dt = T / N
 sharpness = 1 / dt
 updaten = 2
 
-num_channels = 3
+num_channels = 4
 batch_size = 200
-n_relaxstep = 1  # Monitor the first few steps closely
-n_decaystep = 1
+n_relaxstep = 5  # Monitor the first few steps closely
+n_decaystep = 50
 n_totalstep = 100
 simulation_size = n_totalstep * num_channels * batch_size
 simulation_index = np.arange(simulation_size, dtype=int)

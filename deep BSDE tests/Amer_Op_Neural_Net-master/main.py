@@ -14,7 +14,6 @@ AmerOp = AmericanOption(sample_size=simulation_size)
 start_time = time.time()
 
 print("\n\n************** Main Script: Neural Network **************\n")
-dim_layers = [None, d + 5, d + 5, d + 5, d + 5, d + 5, d + 5, d + 5, 1]
 NN = NeuralNet(NN_name="AmerOp", dim_layers=dim_layers)
 
 # Main Script: Neural Network
