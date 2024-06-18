@@ -25,18 +25,18 @@ class Parameters:
         self.p = (np.exp(self.mu * self.dt) - self.d) / (self.u - self.d)
 
 
-def parameters_default():
-    return Parameters(S0=100, K=110, mu=0.07, r=0.02, sigma=0.3, T=1, n=100, num_paths=50000)
+def parameters_default(S0=100, K=110, mu=0.02, r=0.02, sigma=0.3, T=1, n=100, num_paths=50000):
+    return Parameters(S0=S0, K=K, mu=mu, r=r, sigma=sigma, T=T, n=n, num_paths=num_paths)
 
 # longstaff schwartz paper:
 
 
-def parameters_longstaff():
-    return Parameters(S0=36, K=40, mu=0.06, r=0.06, sigma=0.2, T=1, n=50, num_paths=5000)
+def parameters_longstaff(S0=36, K=40, mu=0.06, r=0.06, sigma=0.2, T=1, n=50, num_paths=5000):
+    return Parameters(S0=S0, K=K, mu=mu, r=r, sigma=sigma, T=T, n=n, num_paths=num_paths)
 
 
-def parameters_stylized_longstaff():
-    return Parameters(S0=1, K=1.1, mu=0.06, r=0.06, sigma=0.2, T=3, n=3, num_paths=5000)
+def parameters_stylized_longstaff(S0=1, K=1.1, mu=0.06, r=0.06, sigma=0.2, T=3, n=3, num_paths=5000):
+    return Parameters(S0=S0, K=K, mu=mu, r=r, sigma=sigma, T=T, n=n, num_paths=num_paths)
 
 
 def paths_longstaff():
