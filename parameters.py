@@ -6,7 +6,7 @@ import numpy as np
 class Parameters:
     S0: float = 100
     K: float = 110
-    mu: float = 0.07
+    mu: float = 0.02
     r: float = 0.02
     sigma: float = 0.3
     T: float = 1

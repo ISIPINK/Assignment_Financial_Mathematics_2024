@@ -55,7 +55,7 @@ d = 1
 r = 0.02
 qq = np.array([[0.02] * d], dtype=np_floattype)
 # mu = r - qq
-mu = np.array([[0.07] * d], dtype=np_floattype)
+mu = np.array([[0.02] * d], dtype=np_floattype)
 
 sigma = np.array([[0.3] * d], dtype=np_floattype)
 rho = np.eye(d, dtype=np_floattype) + 0.75 * (
@@ -68,7 +68,7 @@ K = 110
 x0 = 100
 X0 = np.array([[x0] * d], dtype=np_floattype)
 T = 1.0
-N = 30
+N = 10
 
 dim_h = 6
 num_layers = 6
@@ -95,8 +95,8 @@ dt = T / N
 sharpness = 1 / dt
 updaten = 2
 
-num_channels = 4
-batch_size = 200
+num_channels = 1
+batch_size = 100
 n_relaxstep = 5  # Monitor the first few steps closely
 n_decaystep = 50
 n_totalstep = 100
